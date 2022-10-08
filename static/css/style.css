@@ -1,0 +1,114 @@
+html, boyd{
+  height:100vh;
+}
+a,a:hover,a:visited{
+  text-decoration:none;
+}
+
+#search{
+  background-image: url(../img/tese.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#search-blur{
+  height: 70vh;
+  background-color: rgba(18, 27, 58, 0.7);
+  width: 100%;
+  padding:2% 30%;
+}
+label.filter{
+  color: #fff;
+  font-size:14px;
+}
+.search-size{
+  height:70px;
+  min-width:120px;
+  text-transform:uppercase;
+}
+.btn.btn-success.search-size{
+  margin-left:-30px;border-radius:0px;
+  color:#eee;
+}
+.btn.btn-light.filter{
+  border-radius:0px;
+  background-color: #79ad95;
+  border:none !important;
+  color: #222;
+}
+input[type="number"],input[type="text"]{
+  background-color: rgba(255,255,255, 0.7);
+  border:none !important;
+  height:55px;
+  text-indent: 15px;
+}
+input[type="number"]:focus,input[type="text"]:focus{
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  color: #bbb !important;
+  box-shadow:  none !important;
+}
+nav,.nav2{
+  background-color:#fff;
+  color: #333 !important;
+}
+.nav2{
+  background-color:rgba(0,0,0,0.9);
+}
+.user-email{
+  color: #999;
+}
+.navbar-brand{
+  color: #000 !important;
+}
+.nlink{
+  color: #353e4e !important;
+}
+.display-7{
+  font-size: 25px;
+}
+.lbl{
+  font-size: 14px;
+  color: #c5674a !important;
+}
+.item-lst{
+  font-size: 18px;
+  margin-top:2px;
+}
+.card.bg{
+  background-image: url(../img/cardbg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bg-blur{
+  background-color: rgba(255,255,255,0.93)
+}
+.font-14{
+  font-size:13px !important;
+}
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:  #152c3f;
+  color: white;
+  text-align: left;
+}
+
+.side-filter{
+  background-color: #000;
+}
+.mt-n2{
+  margin-top:-2px;
+}
+a.lst-lnk{
+  color: #02335b !important;
+}
+a.lst-lnk:hover{
+  color: #a3543c !important;
+}
+.f-12{
+  font-size:12px;
+  margin-bottom:-10px;
+}

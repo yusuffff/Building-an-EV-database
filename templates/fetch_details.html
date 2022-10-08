@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Electric Vehicle </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" i
+    ntegrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <div class="container-fluid">
+        <!-- user logged in -->
+        <div class="row">
+          <div class="d-flex justify-content-center py-1" style="background-color:#7393B3 ;">
+            {% if user_data %}
+                Logged in as {{ user_data['email'] }}
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- menu -->
+      <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">EV</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item ms-2">
+                  <a class="nlink" aria-current="page" href="/"><i class="fa fa-home"></i> Home</a>
+                </li>
+                  </ul>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item ms-2">
+                    <a class="nlink"  aria-current="page" href="/"><i class="fa fa-search"></i> Search EV</a>
+                    </li>
+                  </ul>
+              <div>
+                <a href="" class="ps-3 me-3 nlink"><i class="fa fa-power-off"></i> Logout</a>
+                <a href="/add" class="ps-3 nlink" id="addev"><i class="fa fa-plus"></i> Add EV</a>
+
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="container-fluid mt-2 pt-5">
+      <div class="row" style="margin-top: 40px; margin-bottom: 40px;">
+          <div class="col-md-2"></div>
+          <div class="col-md-4">
+            <h3>Update Electronic Vehicle</h3>
+            <form action="/edit_vehicle_data" method="post">
+                <div class="mb-3 mt-3">
+                  <label for="vehicle_name" class="form-label">Vehicle name:</label>
+                  <input type="text" class="form-control" name="vehicle_name" value="{{ data['list']['vehicle_name']}}" style="background-color: #D6DBDF" placeholder="Enter vehicle name" name="vehicle name">
+                </div>
+              <div class="mb-3 mt-3">
+                <label for="manufacturer_name" class="form-label">Manufacturer name:</label>
+                <input type="text" class="form-control" name="manufacturer_name" value="{{ data['list']['manufacturer_name']}}" style="background-color: #D6DBDF"  placeholder="Enter manufacturer name:" name="manufacturer_name">
+              </div>
+
+              <div class="mb-3 mt-3">
+                <label for="vehicle_year" class="form-label">Vehicle year:</label>
+                <input type="text" class="form-control" name="vehicle_year" value="{{ data['list']['vehicle_year']}}" style="background-color: #D6DBDF"  placeholder="Enter vehicle year" name="vehicle year">
+              </div>
+
+              <div class="mb-3 mt-3">
+                <label for="vehicle_battery" class="form-label">Vehicle battery:</label>
+                <input type="text" class="form-control" name="vehicle_battery" value="{{ data['list']['vehicle_battery']}}" style="background-color: #D6DBDF" placeholder="Enter battery size " name="vehicle battery ">
+              </div>
+
+
+              <div class="mb-3 mt-3">
+                <label for="vehicle_range" class="form-label">vehicle range:</label>
+                <input type="text" class="form-control" name="vehicle_range" value="{{ data['list']['vehicle_range']}}" style="background-color: #D6DBDF" placeholder="Enter vehicle range" name="WLTP">
+              </div>
+
+
+              <div class="mb-3 mt-3">
+                <label for="vehicle_cost" class="form-label">Vehicle cost:</label>
+                <input type="text" class="form-control" name="vehicle_cost" value="{{ data['list']['vehicle_cost']}}" style="background-color: #D6DBDF" placeholder="Enter vehicle cost" name="vehicle cost">
+              </div>
+
+              <div class="mb-3 mt-3">
+                <label for="vehicle_power" class="form-label">Vehicle power:</label>
+                <input type="text" class="form-control" name="vehicle_power" value="{{ data['list']['vehicle_power']}}" style="background-color: #D6DBDF" placeholder="Enter vehicle power" name="vehicle power">
+              </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="/delete_address/{{data['list']['id']}}" class="btn btn-secondary">Delete</a>
+            <input type="hidden" name="evid" value="{{data['list']['id']}}" />
+
+            </form>
+          </div>
+
+          <div class="col-md-4">
+            <h3>Users Review</h3>
+            <form action="/addReview" method="post">
+              <input type="hidden" name="ev_id" value="{{ data['list']['id']}}" />
+                <div class="mb-3 mt-3">
+                  <label for="vehicle_name" class="form-label">Rating:</label>
+                  <input type="number" class="form-control" name="rating_name"  style="background-color: #D6DBDF" placeholder="Enter Rating" required />
+                </div>
+
+                  <div class="mb-3 mt-3">
+                    <label for="comment">Comments:</label>
+                    <textarea class="form-control" rows="5" name="comment_name" id="comment" required /></textarea>
+                </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <div class="card" style="margin-top: 30px; ">
+              <div class="card-header" style="font-weight: bolder;">User Reviews</div>
+              <h6 class="px-3 pt-2">Average = {{data['rating']}} </h6>
+              {% for review in data['review'] %}
+              <div class="card-body">Rating: {{ review.rating_name }} </div>
+              <div class="card-body" style="margin-top: -20px;">Comment: {{ review.comment_name }} </div>
+              {% endfor %}
+           </div>
+          </div>
+
+
+
+      </div>
+    </div>
+    <div class="container-fluid footer">&copy 2022. Allrights reserved. | A project for Griffith College Dublin</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>
